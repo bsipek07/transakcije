@@ -12,16 +12,15 @@ public class Main {
 
         try(Connection connection = createDataSource().getConnection()) {
             connection.setAutoCommit(false);
-            try (PreparedStatement stmt1 = connection.prepareStatement("UPDATE Stavka SET CijenaPoKomadu = CijenaPoKomadu + ? WHERE IDStavka = ?");
-                PreparedStatement stmt2=connection.prepareStatement("UPDATE Stavka SET CijenaPoKomadu = CijenaPoKomadu + ? WHERE IDStavka = ?")){;
+            try (PreparedStatement stmt1 = connection.prepareStatement("UPDATE Stavka SET CijenaPoKomadu = CijenaPoKomadu + ? WHERE IDStavka = ?");){;
 
                 stmt1.setInt(1,10);
                 stmt1.setInt(2,8);
                 stmt1.executeUpdate();
 
-                stmt2.setInt(1,-10);
-                stmt2.setInt(2,9);
-                stmt2.executeUpdate();
+                stmt1.setInt(1,-10);
+                stmt1.setInt(2,9);
+                stmt1.executeUpdate();
 
 
                 connection.commit();
